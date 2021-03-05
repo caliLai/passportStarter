@@ -22,6 +22,7 @@ app.use(
 );
 
 const passport = require("./middleware/passport");
+const ghPassport = require("./middleware/ghPassport");
 const authRoute = require("./routes/authRoute");
 const indexRoute = require("./routes/indexRoute");
 
@@ -31,6 +32,8 @@ app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(ghPassport.initialize());
+app.use(ghPassport.session());
 
 app.use((req, res, next) => {
   console.log(`User details are: `);

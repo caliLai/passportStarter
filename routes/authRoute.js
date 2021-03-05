@@ -10,13 +10,22 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/dashboard",
-    failureRedirect: "/auth/login",
+    failureRedirect: "/login",
   })
 );
 
 router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/login");
+	req.logout();
+	res.redirect("/login");
 });
 
+router.get('/github',
+ 	passport.authenticate('github'),
+);
+
+router.get('/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/dashboard');
+  });
 module.exports = router;
