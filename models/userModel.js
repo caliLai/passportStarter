@@ -34,9 +34,10 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
-  addGhUser: (id) => {
+  addGhUser: (id, username) => {
 	  database.push({
-		  id: id
+		  id: id,
+		  name: username
 	  })
 	  console.log("user added");
   }

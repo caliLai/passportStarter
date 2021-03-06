@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel").userModel;
 
-const addUserByGh = (id) => {
-	userModel.addGhUser(id);
+const addUserByGh = (id, username) => {
+	userModel.addGhUser(id, username);
 }
 
 const getUserByEmailIdAndPassword = (email, password) => {
@@ -20,6 +20,13 @@ const getUserById = (id) => {
   }
   return null;
 };
+// const getGhUserById = (id) => {
+//   let user = userModel.findById(id);
+//   if (user) {
+//     return user;
+//   }
+//   return null;
+// };
 
 function isUserValid(user, password) {
   return user.password === password;
