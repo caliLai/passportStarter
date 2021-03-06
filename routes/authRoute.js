@@ -16,7 +16,7 @@ router.post(
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("/login");
+	res.redirect("/auth/login");
 });
 
 router.get('/github',

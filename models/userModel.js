@@ -34,6 +34,12 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
+  addGhUser: (id) => {
+	  database.push({
+		  id: id
+	  })
+	  console.log("user added");
+  }
 };
 
 module.exports = { database, userModel };

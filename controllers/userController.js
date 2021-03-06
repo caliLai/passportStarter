@@ -1,5 +1,9 @@
 const userModel = require("../models/userModel").userModel;
 
+const addUserByGh = (id) => {
+	userModel.addGhUser(id);
+}
+
 const getUserByEmailIdAndPassword = (email, password) => {
   let user = userModel.findOne(email);
   if (user) {
@@ -22,6 +26,7 @@ function isUserValid(user, password) {
 }
 
 module.exports = {
+	addUserByGh,
   getUserByEmailIdAndPassword,
   getUserById,
 };
