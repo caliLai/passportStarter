@@ -18,7 +18,7 @@ passport.deserializeUser(function(user, done) {
     // } else {
     //   done({ message: "User not found" }, null);
     // }
-	let userExists = userController.getUserById(user.id);
+	let userExists = userController.getUserById(user._json.id);
     if (userExists) {
       done(null, user);
     } else {
