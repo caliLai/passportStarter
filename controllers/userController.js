@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel").userModel;
 
-const addUserByGh = (id, username) => {
-	userModel.addGhUser(id, username);
+const addUserByGh = (id, username, type) => {
+	userModel.addGhUser(id, username, type);
 }
 
 const getUserByEmailIdAndPassword = (email, password) => {
@@ -34,6 +34,6 @@ function isUserValid(user, password) {
 
 module.exports = {
 	addUserByGh,
-  getUserByEmailIdAndPassword,
-  getUserById,
+	getUserByEmailIdAndPassword,
+	getUserById,
 };

@@ -1,0 +1,18 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome, admin <%= user.name %></p>
+<p> Active Sessions: </p>
+<%# let currentSessions = JSON.parse(sessionIDs); %>
+<% for(let ses in sessionIDs.sessions) { %>
+<%# if(sessionIDs.sessions[ses].passport !== {}) { %>
+		<p>sessionID: <%= ses %><br>
+		userID: <%= JSON.parse(sessionIDs.sessions[ses]).passport.user %></p>
+		
+		<form action="/revoke" method="post">
+			<input type="hidden" value = <%= ses%> name = "sesKey"/>
+			<input type="submit" value="revoke" />
+		</form>
+		</p>
+
+	<%# } %>
+<% } %>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>

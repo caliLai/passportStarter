@@ -36,6 +36,7 @@ app.use(ghPassport.initialize());
 app.use(ghPassport.session());
 
 app.use((req, res, next) => {
+	console.log("===========================");
   console.log(`User details are: `);
   console.log(req.user);
 

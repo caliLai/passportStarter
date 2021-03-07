@@ -7,10 +7,10 @@ passport.serializeUser(function(user, done) {
 	if(!user){
 		done({message:"not enough goats"}, null);
 	}
- 	done(null, user.id);
+ 	done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
  	// done(null, obj);
 	// let user = userController.getUserById(id);
     // if (obj) {
@@ -18,7 +18,7 @@ passport.deserializeUser(function(id, done) {
     // } else {
     //   done({ message: "User not found" }, null);
     // }
-	let userExists = userController.getUserById(id);
+	let userExists = userController.getUserById(user.id);
     if (userExists) {
       done(null, user);
     } else {
@@ -32,9 +32,10 @@ const ghLogin = new GitHubStrategy({
 	callbackURL: "http://localhost:8000/auth/github/callback"
 },
 	function(accessToken, refreshToken, profile, done) {
-		let user = {id: profile.id, name: profile.username};
-		// console.log(`USER: ${user.id} ${user.name}`);
-		userController.addUserByGh(profile.id, profile.username);
+		let user = {id: profile._json.id, name: profile.username, type: profile._json.type};
+		// console.log(`USER: ${user.id} ${user.name} ${user.type}`);
+		// console.log(profile._json.type);
+		userController.addUserByGh(profile._json.id, profile.username, profile._json.type);
 		return user
 	      ? done(null, user)
 	      : done(null, false, {

@@ -4,18 +4,21 @@ const database = [
     name: "Jimmy Smith",
     email: "jimmy123@gmail.com",
     password: "jimmy123!",
+	type: "User"
   },
   {
     id: 2,
     name: "Johnny Doe",
     email: "johnny123@gmail.com",
     password: "johnny123!",
+	type: "User"
   },
   {
     id: 3,
     name: "Jonathan Chen",
     email: "jonathan123@gmail.com",
     password: "jonathan123!",
+	type: "Admin"
   },
 ];
 
@@ -34,10 +37,11 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
-  addGhUser: (id, username) => {
+  addGhUser: (id, username, type) => {
 	  database.push({
 		  id: id,
-		  name: username
+		  name: username,
+		  type: type
 	  })
 	  console.log("user added");
   }
