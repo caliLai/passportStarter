@@ -32,11 +32,7 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
 		  sessionIDs: req.sessionStore,
 		  // revoke: revoke,
 	  })
-<<<<<<< HEAD
 	  // next();
-=======
-	  //next();
->>>>>>> second
   } else {
 	  res.redirect("/dashboard");
   }
